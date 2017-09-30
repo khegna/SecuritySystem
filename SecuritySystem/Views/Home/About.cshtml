@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "About";
+}
+@model SecuritySystem.Models.LoginViewModel
+
+<form>
+    @Html.LabelFor(m => m.Email)
+    @Html.TextBoxFor(m => m.Email)
+    @Html.ValidationMessageFor(m => m.Email)
+
+  
+    @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+    @Html.PasswordFor(m => m.Password)
+    @Html.ValidationMessageFor(m => m.Password)
+</form>

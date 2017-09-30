@@ -1,0 +1,20 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<style>
+    body {
+        background-image: url('../../Content/Pictures/SecuritySystem2.jpg');
+        background-size: 100%;
+        background-repeat: no-repeat;
+        width: 100%;
+    }
+</style>
+
+
+<div class="jumbotron">
+    <h1>Security System</h1>
+    <p class="lead">Security System is an application built for user who needs to securly store their personal pictures online.</p>
+    <p><input type="button" class="btn btn-primary btn-lg" value="Sign up now!" onclick="location.href='@Url.Action("Create", "User")'" />
+</div>

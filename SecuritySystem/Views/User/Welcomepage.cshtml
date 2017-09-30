@@ -1,0 +1,10 @@
+﻿@model SecuritySystem.Data.User
+@{
+    ViewBag.Title = "Welcomepage";
+}
+
+@if (Model != null) { 
+    <h2>Welcome, @Model.UserName !</h2> 
+    <h4>You have been successfully signed into your account. </h4>
+}
+
