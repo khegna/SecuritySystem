@@ -129,6 +129,11 @@ namespace SecuritySystem.Controllers
                 return View();
             }
         }
+        public ActionResult logout()
+        {
+            Session["user"] = null;
+            return View(new { User = Session["user"] });
+        }
         // GET: User/Edit/5
         public ActionResult Edit(int? id)
         {

@@ -1,10 +1,10 @@
-﻿@model SecuritySystem.Data.User
+﻿@using SecuritySystem.Data;
+
 @{
     ViewBag.Title = "Welcomepage";
 }
 
-@if (Model != null) { 
-    <h2>Welcome, @Model.UserName !</h2> 
+@if ((User)Session["user"] != null) { 
+    <h2>Welcome, @(((User)Session["user"]).FirstName) @(((User)Session["user"]).LastName) !</h2> 
     <h4>You have been successfully signed into your account. </h4>
 }
-

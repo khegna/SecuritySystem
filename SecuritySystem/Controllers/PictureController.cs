@@ -26,6 +26,7 @@ namespace SecuritySystem.Controllers
         public ActionResult AddImage()
         {
             Picture picture = new Picture();
+            ViewBag.success = "null";
             return View(picture);
         }
         [HttpPost]
@@ -58,7 +59,7 @@ namespace SecuritySystem.Controllers
             {
                 return View();
             }
-
+            ViewBag.success = "Your image has been successfully uploaded";
             db.Pictures.Add(pictureObject);
             db.SaveChanges();
             return View(pictureObject);

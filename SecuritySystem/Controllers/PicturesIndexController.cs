@@ -154,7 +154,39 @@ namespace SecuritySystem.Controllers
             {
                 return HttpNotFound();
             }
-            return View(picture);
+
+
+            var _encryptor = new EncryptorPicture();
+            if (Session["user"] != null)
+            {
+                var userSession = (User)Session["user"];
+               // var pictures = _pictureRepository.GetPicturesByUserId(userSession.UserId);
+                List<TemporaryPictureClass> tempData = new List<TemporaryPictureClass>();
+
+                var iv = picture.Vector;
+                byte[] key;
+                using (var md5 = MD5.Create())
+                {
+                    key = md5.ComputeHash(UTF8Encoding.UTF8.GetBytes(userSession.UserPassword));
+                }
+
+                var decryptedPicture = _encryptor.Decrypt(picture.PictureFile, key, iv);
+                var pictureDecryptId = picture.PictureID;
+                TemporaryPictureClass temporary = new TemporaryPictureClass();
+                temporary.PictureID = picture.PictureID;
+                temporary.PictureFile = decryptedPicture;
+
+                tempData.Add(temporary);
+
+
+
+                ViewBag.temp = tempData;
+                ViewBag.DecryptedPictureFile = decryptedPicture;
+                ViewBag.count = 0;
+
+                return View(picture);
+            }
+            return View();
         }
 
         // POST: PicturesIndex/Delete/5

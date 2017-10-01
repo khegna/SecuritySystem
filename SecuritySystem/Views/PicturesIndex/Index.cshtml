@@ -4,19 +4,17 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<b><h2>Images</h2></b>
+ <br/>
 
     @foreach (var item in ViewBag.temp)
     {
 
         var base64 = Convert.ToBase64String(item.PictureFile);
         var imgsrc = string.Format("data:image/gif;base64,{0}", base64);
+        
         <div class="col-md-12">
-            <a href="@imgsrc"><img src="@imgsrc" class="img img-thumbnail img-responsive" style="width:100px; height:100px;"></a>
+            <a href="@imgsrc"><img src="@imgsrc" class="img img-thumbnail img-responsive" style="width:120px; height:100px;"></a>
             @Html.ActionLink("Delete", "Delete", new { id = item.PictureID })
             
           

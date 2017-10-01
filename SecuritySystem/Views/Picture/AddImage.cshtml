@@ -8,7 +8,12 @@
 @using (Html.BeginForm("AddImage","Picture",FormMethod.Post, new { enctype= "multipart/form-data"}))
 {
     @Html.AntiForgeryToken()
-    
+
+    if (ViewBag.success != "null")
+    {
+        <h4>@ViewBag.success</h4>
+    }
+
     <div class="form-horizontal">
         <h2>Upload Image</h2>
         <hr />
